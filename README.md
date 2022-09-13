@@ -69,7 +69,9 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 BdShop is an open source ecommerce platform management system using laravel
 
 ## Packages Used
--
+-laravel-debugbar
+-laravel-ide-helper
+-laravel-medialibery
 
 
 ## Installation Instructions
