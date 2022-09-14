@@ -4,7 +4,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 9.29.0.
+ * Generated for Laravel 9.30.0.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -14528,6 +14528,18 @@
                         return $instance->createS3Driver($config);
         }
                     /**
+         * Create a scoped driver.
+         *
+         * @param array $config
+         * @return \Illuminate\Filesystem\FilesystemAdapter 
+         * @static 
+         */ 
+        public static function createScopedDriver($config)
+        {
+                        /** @var \Illuminate\Filesystem\FilesystemManager $instance */
+                        return $instance->createScopedDriver($config);
+        }
+                    /**
          * Set the given disk instance.
          *
          * @param string $name
@@ -17007,35 +17019,6 @@
         {
                         return \Illuminate\Support\Collection::debug();
         }
-                    /**
-         * 
-         *
-         * @see \Spatie\LaravelRay\RayServiceProvider::registerMacros()
-         * @param string $description
-         * @static 
-         */ 
-        public static function ray($description = '')
-        {
-                        return \Illuminate\Support\Collection::ray($description);
-        }
-         
-    }
-            /**
-     * 
-     *
-     */ 
-        class Stringable {
-                    /**
-         * 
-         *
-         * @see \Spatie\LaravelRay\RayServiceProvider::registerMacros()
-         * @param string $description
-         * @static 
-         */ 
-        public static function ray($description = '')
-        {
-                        return \Illuminate\Support\Stringable::ray($description);
-        }
          
     }
      
@@ -18093,49 +18076,6 @@
         public static function hasValidSignatureWhileIgnoring($ignoreQuery = [], $absolute = true)
         {
                         return \Illuminate\Http\Request::hasValidSignatureWhileIgnoring($ignoreQuery, $absolute);
-        }
-         
-    }
-     
-}
-
-    namespace Illuminate\Testing { 
-            /**
-     * 
-     *
-     * @mixin \Illuminate\Http\Response
-     */ 
-        class TestResponse {
-                    /**
-         * 
-         *
-         * @see \Spatie\LaravelRay\RayServiceProvider::registerMacros()
-         * @static 
-         */ 
-        public static function ray()
-        {
-                        return \Illuminate\Testing\TestResponse::ray();
-        }
-         
-    }
-     
-}
-
-    namespace Illuminate\Database\Query { 
-            /**
-     * 
-     *
-     */ 
-        class Builder {
-                    /**
-         * 
-         *
-         * @see \Spatie\LaravelRay\RayServiceProvider::registerMacros()
-         * @static 
-         */ 
-        public static function ray()
-        {
-                        return \Illuminate\Database\Query\Builder::ray();
         }
          
     }
@@ -21867,17 +21807,6 @@ namespace  {
             {
                                 /** @var \Illuminate\Database\Query\Builder $instance */
                                 return $instance->macroCall($method, $parameters);
-            }
-             
-                /**
-             * 
-             *
-             * @see \Spatie\LaravelRay\RayServiceProvider::registerMacros()
-             * @static 
-             */ 
-            public static function ray()
-            {
-                                return \Illuminate\Database\Query\Builder::ray();
             }
                     }
             class Event extends \Illuminate\Support\Facades\Event {}

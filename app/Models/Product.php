@@ -32,4 +32,6 @@ class Product extends Model implements HasMedia
 
 
 
+
+
 }
