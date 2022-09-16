@@ -27,6 +27,11 @@ class ProductRepositories implements ProductInterface{
     {
 
     }
+    public function showProduct($slug)
+    {
+        return Product::where('slug', $slug)->where('active', 1)->first();
+    }
+
 
 
 }

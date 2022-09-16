@@ -12,10 +12,11 @@
             <div class="card shadow-sm">
 
               {{-- image --}}
-              <img class="card-img-top"
+              <a href="{{route('product.detail', $product->slug)}}"><img class="card-img-top"
                src="{{$product->getFirstMediaUrl('products')}}"
                alt="{{$product->title}}"
               >
+            </a>
               <div class="card-body">
 
                   {{-- title --}}
@@ -29,7 +30,7 @@
                   </div>
 
                   {{-- price --}}
-                  <strong class="text-muted">{{$product->selling_price}}</strong>
+                  <strong class="text-muted">{{$product->original_price}}</strong>
                 </div>
               </div>
             </div>

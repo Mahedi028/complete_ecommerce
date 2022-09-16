@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +15,8 @@ use App\Http\Controllers\Frontend\HomeController;
 */
 
 Route::namespace('Frontend')->group(function () {
-    Route::get('/', [HomeController::class, 'showHomePage']);
+    Route::get('/', [HomeController::class, 'showHomePage'])->name('home');
+    Route::get('/product/{slug}', [ProductController::class, 'productDetails'])->name('product.detail');
 
 });
 
