@@ -26,11 +26,22 @@
                 <div class="d-flex justify-content-between align-items-center">
                   {{-- add to cart --}}
                   <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Add-to-cart</button>
-                  </div>
+                    <form action="{{route('cart.add')}}" method="POST">
+                        @csrf
+                        <input type="hidden" name="product_id" value="{{$product->id}}">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <button class="add-to-cart btn btn-primary" type="submit">add to cart</button>
+                    </form>
+                </div>
 
                   {{-- price --}}
-                  <strong class="text-muted">{{$product->original_price}}</strong>
+                  <strong class="text-muted">
+                    @if($product->selling_price !=null ||$product->selling_price > 0)
+                        BDT:<strike>{{$product->selling_price}}</strike>BDT:{{$product->original_price}}
+                        @else
+                    BDT:{{$product->original_price}}
+                    @endif
+                </strong>
                 </div>
               </div>
             </div>

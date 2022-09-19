@@ -44,7 +44,14 @@
                         <span class="review-no">41 reviews</span>
                     </div> --}}
                     <p class="product-description">{{$product->description}}</p>
-                    <h4 class="price">current price: <span>{{$product->original_price}}</span></h4>
+                    <h4 class="price">
+                        @if($product->selling_price !=null ||$product->selling_price > 0)
+                             BDT:<strike>{{$product->selling_price}}</strike>BDT:{{$product->original_price}}
+                        @else
+                            BDT:{{$product->original_price}}
+                        @endif
+                    </h4>
+
                     {{-- <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p> --}}
                     {{-- <h5 class="sizes">sizes:
                         <span class="size" data-toggle="tooltip" title="small">s</span>
@@ -58,7 +65,11 @@
                         <span class="color blue"></span>
                     </h5> --}}
                     <div class="action">
-                        <button class="add-to-cart btn btn-primary" type="button">add to cart</button>
+                        <form action="{{route('cart.add')}}" method="POST">
+                            @csrf
+                            <input type="hidden" name="product_id" value="{{$product->id}}">
+                            <button class="add-to-cart btn btn-primary" type="submit">add to cart</button>
+                        </form>
                         <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
                     </div>
                 </div>

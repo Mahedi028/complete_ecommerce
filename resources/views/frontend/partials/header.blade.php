@@ -16,8 +16,8 @@
             <h4 class="text-white">Contact</h4>
                 <ul class="list-unstyled">
                     @guest
-                        <li><a href="#" class="text-white text-decoration-none">Register</a></li>
-                        <li><a href="#" class="text-white text-decoration-none">login</a></li>
+                        <li><a href="{{route('register')}}" class="text-white text-decoration-none">Register</a></li>
+                        <li><a href="{{route('login')}}" class="text-white text-decoration-none">login</a></li>
                     @endguest
 
                     @auth
@@ -25,7 +25,7 @@
                         <li><a href="#" class="text-white text-decoration-none">logout</a></li>
                     @endauth
 
-                    <li><a href="#" class="text-white text-decoration-none">Cart</a></li>
+                    <li><a href="{{route('cart.show')}}" class="text-white text-decoration-none">Cart</a></li>
               </ul>
           </div>
         </div>
