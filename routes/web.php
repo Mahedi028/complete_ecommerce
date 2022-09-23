@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Frontend\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\HomeController;
@@ -30,8 +32,10 @@ Route::namespace('Frontend')->group(function () {
 
     Route::get('/register', [AuthController::class, 'showRegister']);
     Route::post('/register', [AuthController::class, 'processRegister'])->name('register');
-    Route::get('/login', [AuthController::class, 'showLogin']);
+    Route::get('/login', [AuthController::class, 'showLogin'])->name('login.show');
     Route::post('/login', [AuthController::class, 'processLogin'])->name('login');
+
+    Route::get('/activate/{token}', [AuthController::class, 'activate'])->name('activate');
 
 
     //facebook login
@@ -43,6 +47,31 @@ Route::namespace('Frontend')->group(function () {
     Route::get('login/google/callback',  [AuthController::class, 'handleGoogleCallback']);
 
 
+    Route::group(['middleware'=>'auth'],function () {
+
+        Route::post('/order', [CartController::class, 'processOrder'])->name('order');
+
+
+        Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+        Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
+
+    });
+
+
+});
+
+
+//admin
+Route::prefix('admin')->namespace('Backend')->group(function(){
+    Route::get('/dashboard', [AdminController::class, 'showDashboard']);
+
+    //categories
+    Route::get('/categories/create', [CategoryController::class, 'create']);
+    Route::post('/categories/create', [CategoryController::class, 'store']);
+    Route::get('/categories', [CategoryController::class, 'index']);
+    Route::get('/categories/{category}/edit', [CategoryController::class, 'edit']);
+    Route::put('/categories/{category}/update', [CategoryController::class, 'update']);
+    Route::delete('/categories/{category}/delete', [CategoryController::class, 'delete']);
 });
 
 

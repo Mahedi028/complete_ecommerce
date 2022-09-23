@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('customer_name', 128);
+            $table->string('customer_email', 128);
             $table->string('customer_phone_number', 32);
             $table->text('address');
             $table->string('city', 32);
@@ -28,7 +29,9 @@ return new class extends Migration
             $table->string('operational_status', 16)->default('pending');
             $table->unsignedInteger('processed_by')->nullable();
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            // $table->dropForeign('user_id');
+            // $table->foreign('user_id')->constrained('users')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -39,6 +42,10 @@ return new class extends Migration
      */
     public function down()
     {
+        // Schema::table('orders', function (Blueprint $table) {
+        //     $table->dropForeign(['user_id']);
+        // });
+        Schema::dropIfExists('users');
         Schema::dropIfExists('orders');
     }
 };

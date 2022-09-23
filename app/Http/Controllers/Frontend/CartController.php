@@ -105,4 +105,10 @@ class CartController extends Controller
     {
         return view('frontend.checkout');
     }
+
+    public function processOrder(Request $request)
+    {
+        dd($request->all());
+
+    }
 }

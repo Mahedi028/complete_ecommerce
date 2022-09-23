@@ -21,8 +21,8 @@
                     @endguest
 
                     @auth
-                        <li><a href="#" class="text-white text-decoration-none">Profile</a></li>
-                        <li><a href="#" class="text-white text-decoration-none">logout</a></li>
+                        <li><a href="{{route('profile')}}" class="text-white text-decoration-none">Profile</a></li>
+                        <li><a href="{{route('logout')}}" class="text-white text-decoration-none">logout</a></li>
                     @endauth
 
                     <li><a href="{{route('cart.show')}}" class="text-white text-decoration-none">Cart</a></li>
